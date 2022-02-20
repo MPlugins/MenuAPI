@@ -3,13 +3,28 @@ package org.leiers.minecraft.mmenu.listeners;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.InventoryAction;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
-import org.leiers.minecraft.mmenu.Menu;
+import org.leiers.minecraft.mmenu.menu.Menu;
 
 public class MMenuListener implements Listener
 {
+    @EventHandler
+    public void onClose(InventoryCloseEvent event)
+    {
+        Inventory inventory = event.getInventory();
+        InventoryHolder inventoryHolder = inventory.getHolder();
+
+        if (!(inventoryHolder instanceof Menu))
+            return;
+
+        Menu menu = (Menu) inventoryHolder;
+        menu.onClose();
+    }
+
     @EventHandler
     public void onClick(InventoryClickEvent event)
     {
@@ -26,6 +41,27 @@ public class MMenuListener implements Listener
         Menu menu = (Menu) inventoryHolder;
         menu.click(event.getSlot(), (Player) event.getWhoClicked());
 
-        event.setCancelled(menu.hasStaticItems());
+        InventoryAction action = event.getAction();
+
+        if (event.getCurrentItem() == null)
+            return;
+
+        switch (action)
+        {
+            case PLACE_ALL:
+            case PLACE_ONE:
+            case PLACE_SOME:
+                event.setCancelled(!menu.canPlaceItems());
+                break;
+            case PICKUP_ALL:
+            case PICKUP_HALF:
+            case PICKUP_ONE:
+            case PICKUP_SOME:
+                event.setCancelled(menu.cancelPickUp(event.getCurrentItem()));
+                break;
+            default:
+                event.setCancelled(true);
+                break;
+        }
     }
 }

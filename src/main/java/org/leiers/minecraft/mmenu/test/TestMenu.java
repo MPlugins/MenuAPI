@@ -3,16 +3,11 @@ package org.leiers.minecraft.mmenu.test;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
-import org.leiers.minecraft.mmenu.MIcon;
-import org.leiers.minecraft.mmenu.Menu;
+import org.leiers.minecraft.mmenu.menu.MIcon;
+import org.leiers.minecraft.mmenu.menu.Menu;
 
 public class TestMenu extends Menu
 {
-    public TestMenu()
-    {
-        super("Test Inventory");
-    }
-
     @Override
     protected void setIcons()
     {
