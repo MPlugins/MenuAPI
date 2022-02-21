@@ -1,10 +1,10 @@
-package org.leiers.minecraft.mmenu.test;
+package org.leiers.minecraft.menu.test;
 
 import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
-import org.leiers.minecraft.mmenu.menu.MIcon;
-import org.leiers.minecraft.mmenu.menu.Menu;
+import org.leiers.minecraft.menu.menu.MIcon;
+import org.leiers.minecraft.menu.menu.Menu;
 
 public class TestMenu extends Menu
 {

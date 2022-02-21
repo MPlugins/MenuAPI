@@ -1,4 +1,4 @@
-package org.leiers.minecraft.mmenu.menu;
+package org.leiers.minecraft.menu.menu;
 
 public enum MenuRows
 {

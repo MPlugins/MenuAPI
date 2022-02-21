@@ -1,14 +1,13 @@
-package org.leiers.minecraft.mmenu.menu;
+package org.leiers.minecraft.menu.menu;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
-import org.leiers.minecraft.mmenu.MMenu;
+import org.leiers.minecraft.menu.MMenu;
 
 import java.util.function.Consumer;
 

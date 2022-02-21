@@ -1,4 +1,4 @@
-package org.leiers.minecraft.mmenu.menu;
+package org.leiers.minecraft.menu.menu;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -6,7 +6,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataType;
-import org.leiers.minecraft.mmenu.MMenu;
+import org.leiers.minecraft.menu.MMenu;
 
 import java.util.HashMap;
 
