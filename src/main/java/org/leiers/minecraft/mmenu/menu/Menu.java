@@ -15,7 +15,7 @@ public abstract class Menu implements InventoryHolder
     static final boolean DEFAULT_CAN_PLACE_ITEMS = false;
     static final boolean DEFAULT_CAN_TAKE_ITEMS = false;
     static final String DEFAULT_MENU_TITLE = "Menu";
-    static final int DEFAULT_MENU_ROWS = 3;
+    static final MenuRows DEFAULT_MENU_ROWS = MenuRows.THREE;
 
     private final HashMap<Integer, MIcon> icons = new HashMap<>();
     private final Inventory inventory;
@@ -31,7 +31,7 @@ public abstract class Menu implements InventoryHolder
     public Menu(MenuSettings settings)
     {
         this.settings = settings;
-        this.inventory = Bukkit.createInventory(this, settings.getRows() * 9, settings.getTitle());
+        this.inventory = Bukkit.createInventory(this, settings.getRows().getAsInt() * 9, settings.getTitle());
     }
 
     public boolean canPlaceItems()

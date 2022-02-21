@@ -10,7 +10,7 @@ public class MenuSettingsBuilder
     private boolean canPlaceItems = DEFAULT_CAN_PLACE_ITEMS;
     private boolean canTakeItems = DEFAULT_CAN_TAKE_ITEMS;
     private String title = DEFAULT_MENU_TITLE;
-    private int rows = DEFAULT_MENU_ROWS;
+    private MenuRows rows = DEFAULT_MENU_ROWS;
 
     public MenuSettingsBuilder setTitle(String title)
     {
@@ -19,7 +19,7 @@ public class MenuSettingsBuilder
         return this;
     }
 
-    public MenuSettingsBuilder setRows(int rows)
+    public MenuSettingsBuilder setRows(MenuRows rows)
     {
         this.rows = rows;
 

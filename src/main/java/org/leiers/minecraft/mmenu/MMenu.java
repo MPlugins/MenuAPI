@@ -3,6 +3,9 @@ package org.leiers.minecraft.mmenu;
 import org.bukkit.NamespacedKey;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.leiers.minecraft.mmenu.listeners.MMenuListener;
+import org.leiers.minecraft.mmenu.menu.MenuSettings;
+import org.leiers.minecraft.mmenu.menu.MenuSettingsBuilder;
+import org.leiers.minecraft.mmenu.test.TestMenu;
 
 public final class MMenu
 {

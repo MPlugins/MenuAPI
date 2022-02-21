@@ -3,11 +3,11 @@ package org.leiers.minecraft.mmenu.menu;
 public class MenuSettings
 {
     private final String title;
-    private final int rows;
+    private final MenuRows rows;
     private final boolean canPlaceItems;
     private final boolean canTakeItems;
 
-    public MenuSettings(String title, int rows, boolean canPlaceItems, boolean canTakeItems)
+    public MenuSettings(String title, MenuRows rows, boolean canPlaceItems, boolean canTakeItems)
     {
         this.title = title;
         this.rows = rows;
@@ -20,7 +20,7 @@ public class MenuSettings
         return title;
     }
 
-    public int getRows()
+    public MenuRows getRows()
     {
         return rows;
     }
