@@ -18,11 +18,6 @@ public class ItemFactory
     private final ItemMeta meta;
     private final List<String> lore;
 
-    public ItemFactory(JavaPlugin plugin)
-    {
-        this(Material.BARRIER);
-    }
-
     public ItemFactory(Material material)
     {
         this(new ItemStack(material, 1));
