@@ -1,4 +1,4 @@
-package org.leiers.minecraft.mmenu.item;
+package org.leiers.minecraft.menu.item;
 
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
