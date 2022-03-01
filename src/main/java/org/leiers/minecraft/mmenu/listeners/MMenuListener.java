@@ -6,6 +6,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryAction;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
+import org.bukkit.event.inventory.InventoryDragEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 import org.leiers.minecraft.mmenu.menu.Menu;
@@ -26,6 +27,15 @@ public class MMenuListener implements Listener
     }
 
     @EventHandler
+    public void onDrag(InventoryDragEvent event)
+    {
+        Inventory inventory = event.getInventory();
+        InventoryHolder inventoryHolder = inventory.getHolder();
+
+        event.setCancelled(inventoryHolder instanceof Menu);
+    }
+
+    @EventHandler
     public void onClick(InventoryClickEvent event)
     {
         Inventory inventory = event.getClickedInventory();
@@ -42,9 +52,6 @@ public class MMenuListener implements Listener
         menu.click(event.getSlot(), (Player) event.getWhoClicked());
 
         InventoryAction action = event.getAction();
-
-        if (event.getCurrentItem() == null)
-            return;
 
         switch (action)
         {

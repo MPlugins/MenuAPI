@@ -18,7 +18,7 @@ public abstract class Menu implements InventoryHolder
     static final int DEFAULT_MENU_ROWS = 3;
 
     private final HashMap<Integer, MIcon> icons = new HashMap<>();
-    private final Inventory inventory;
+    private Inventory inventory;
     private MenuSettings settings;
 
     protected Player player;
@@ -30,8 +30,7 @@ public abstract class Menu implements InventoryHolder
 
     public Menu(MenuSettings settings)
     {
-        this.settings = settings;
-        this.inventory = Bukkit.createInventory(this, settings.getRows() * 9, settings.getTitle());
+        setSettings(settings);
     }
 
     public boolean canPlaceItems()
@@ -45,6 +44,11 @@ public abstract class Menu implements InventoryHolder
     }
 
     protected abstract void setIcons();
+
+    public void addItem(ItemStack item)
+    {
+        getInventory().addItem(item);
+    }
 
     public void addIcon(MIcon icon)
     {
@@ -63,6 +67,7 @@ public abstract class Menu implements InventoryHolder
     public void setSettings(MenuSettings settings)
     {
         this.settings = settings;
+        this.inventory = Bukkit.createInventory(this, settings.getRows() * 9, settings.getTitle());
     }
 
     public boolean cancelPickUp(ItemStack item)

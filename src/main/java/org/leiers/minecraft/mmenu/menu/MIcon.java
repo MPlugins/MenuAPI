@@ -25,10 +25,13 @@ public class MIcon
 
     private ItemStack makeMenuItem(ItemStack item)
     {
+        if (item == null)
+            return null;
+
         ItemMeta meta = item.getItemMeta();
 
         if (meta == null)
-            meta = Bukkit.getItemFactory().getItemMeta(item.getType());
+            return item;
 
         PersistentDataContainer persistentDataContainer = meta.getPersistentDataContainer();
         persistentDataContainer.set(MMenu.getInstance().getNamespacedKey(), PersistentDataType.SHORT, (short) 1);
