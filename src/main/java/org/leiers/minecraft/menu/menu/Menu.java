@@ -1,4 +1,4 @@
-package org.leiers.minecraft.mmenu.menu;
+package org.leiers.minecraft.menu.menu;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -6,7 +6,7 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.persistence.PersistentDataType;
-import org.leiers.minecraft.mmenu.MMenu;
+import org.leiers.minecraft.menu.MMenu;
 
 import java.util.HashMap;
 
@@ -15,10 +15,10 @@ public abstract class Menu implements InventoryHolder
     static final boolean DEFAULT_CAN_PLACE_ITEMS = false;
     static final boolean DEFAULT_CAN_TAKE_ITEMS = false;
     static final String DEFAULT_MENU_TITLE = "Menu";
-    static final int DEFAULT_MENU_ROWS = 3;
+    static final MenuRows DEFAULT_MENU_ROWS = MenuRows.THREE;
 
     private final HashMap<Integer, MIcon> icons = new HashMap<>();
-    private Inventory inventory;
+    private final Inventory inventory;
     private MenuSettings settings;
 
     protected Player player;
@@ -30,7 +30,8 @@ public abstract class Menu implements InventoryHolder
 
     public Menu(MenuSettings settings)
     {
-        setSettings(settings);
+        this.settings = settings;
+        this.inventory = Bukkit.createInventory(this, settings.getRows().getAsInt() * 9, settings.getTitle());
     }
 
     public boolean canPlaceItems()
@@ -44,11 +45,6 @@ public abstract class Menu implements InventoryHolder
     }
 
     protected abstract void setIcons();
-
-    public void addItem(ItemStack item)
-    {
-        getInventory().addItem(item);
-    }
 
     public void addIcon(MIcon icon)
     {
@@ -67,7 +63,6 @@ public abstract class Menu implements InventoryHolder
     public void setSettings(MenuSettings settings)
     {
         this.settings = settings;
-        this.inventory = Bukkit.createInventory(this, settings.getRows() * 9, settings.getTitle());
     }
 
     public boolean cancelPickUp(ItemStack item)

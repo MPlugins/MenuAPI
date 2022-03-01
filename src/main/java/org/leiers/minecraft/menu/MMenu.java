@@ -1,8 +1,12 @@
-package org.leiers.minecraft.mmenu;
+package org.leiers.minecraft.menu;
 
 import org.bukkit.NamespacedKey;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.leiers.minecraft.mmenu.listeners.MMenuListener;
+import org.leiers.minecraft.menu.listeners.MMenuListener;
+import org.leiers.minecraft.menu.menu.MenuRows;
+import org.leiers.minecraft.menu.menu.MenuSettings;
+import org.leiers.minecraft.menu.menu.MenuSettingsBuilder;
+import org.leiers.minecraft.menu.test.TestMenu;
 
 public final class MMenu
 {
@@ -16,6 +20,15 @@ public final class MMenu
         this.plugin = plugin;
         namespacedKey = new NamespacedKey(MMenu.getInstance().getPlugin(), "mmenu_item");
         plugin.getServer().getPluginManager().registerEvents(new MMenuListener(), plugin);
+
+        TestMenu test = new TestMenu();
+        MenuSettings settings = new MenuSettingsBuilder()
+                .setTitle("My Menu")
+                .setRows(MenuRows.FOUR)
+                .setCanPlaceItems()
+                .create();
+
+        test.setSettings(settings);
     }
 
     public NamespacedKey getNamespacedKey()
